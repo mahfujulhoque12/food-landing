@@ -10,7 +10,7 @@ html {
 
 :root {
   --btn-bg: #D84040;
-  --badge-bg: #F8F2DE;
-  --gradient-from: #fffdfb;
-  --gradient-to: #F8F2DE;
+  --badge-bg: #Fff;
+  --gradient-from: #fff;
+  --gradient-to: #fff;
 }
