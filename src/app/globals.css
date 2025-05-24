@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --btn-bg: #D84040;
+  --badge-bg: #F8F2DE;
+  --gradient-from: #fffdfb;
+  --gradient-to: #F8F2DE;
+}
