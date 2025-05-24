@@ -72,7 +72,7 @@ const Hero = () => {
               key={i}
               className={`
                 h-2 w-2 rounded-full transition-transform
-                ${activeDot === i ? 'bg-blue-600 scale-125' : 'bg-gray-300'}
+                ${activeDot === i ? 'bg-[var(--badge-bg)] scale-125' : 'bg-gray-300'}
               `}
               aria-label={`Go to group ${i + 1}`}
               onClick={() => api?.scrollTo(targetIndex)}
