@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { FaStar } from "react-icons/fa6";
 import { useGetReviewQuery } from "@/redux/features/api/reviewApi";
@@ -12,18 +12,31 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 const CustomerReview = () => {
   const { data: reviews = [], isLoading } = useGetReviewQuery();
+    const [modalImage, setModalImage] = useState<string | StaticImageData | null>(null);
+
+ const openModal = (image: string | StaticImageData) => {
+  setModalImage(image);
+};
+
+
+  const closeModal = () => {
+    setModalImage(null);
+  };
+
+  
 
   if (isLoading) return <p>Loading…</p>;
 
   return (
     <MaxWidthWrapper>
-      <h2 className="text-2xl font-bold text-center my-5 text-gray-800">
+      <h2 className="text-2xl font-bold  my-5 text-gray-800">
         Customer Reviews
       </h2>
 
@@ -41,18 +54,25 @@ const CustomerReview = () => {
                         width={100}
                         height={100}
                         alt="img"
-                        className="rounded-full h-20 w-20 object-cover"
+                        className="rounded-full h-16 w-16 object-cover"
                       /> :     <FaUserCircle size={50} color="#D84040"/>}
                   
                    
                   
                       <div>
-                        <h3 className="text-lg font-medium text-gray-800 mt-2">
+                    
+                        <h3 className="text-lg font-medium text-gray-800">
                           {review.name}
                         </h3>
+                  
                         <p className="text-sm font-normal text-gray-600">
                       {review.customerType}
                         </p>
+                                     <p className="text-[#D84040] flex gap-1 mt-1">
+                      {Array.from({ length: review.rating }, (_, i) => (
+                        <FaStar key={i} size={14} />
+                      ))}
+                    </p>
                       </div>
                     </div>
                     {/* Name style end */}
@@ -74,11 +94,11 @@ const CustomerReview = () => {
                   </div>
                   {/* Star rating */}
                   <div className="mt-3 bg-[#D84040]/10 p-4">
-                    <p className="text-[#D84040] flex gap-1">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <FaStar key={i} size={20} />
+                    <div className="w-full flex gap-2">
+                      {review.imgs.map((img, index) => (
+                        <Image key={index} src={img} width={100} height={100} alt="img" className="w-16 h-16 rounded-md cursor-pointer"  onClick={() => openModal(img)}/>
                       ))}
-                    </p>
+                    </div>
                   </div>
                   {/* Star end */}
                 </div>
@@ -88,6 +108,32 @@ const CustomerReview = () => {
           <CarouselPrevious className="hover:bg-[#D84040] hover:text-white border-gray-200"/>
           <CarouselNext  className="hover:bg-[#D84040] hover:text-white border-gray-200"/>
         </Carousel>
+          {modalImage && (
+                <div
+                  className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                  onClick={closeModal}
+                >
+                  <div
+                    className="relative max-w-3xl w-full"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      className="absolute top-2 right-2 text-white text-2xl z-10"
+                      onClick={closeModal}
+                    >
+                      <IoClose />
+                    </button>
+                    <Image
+                      src={modalImage}
+                      width={1200}
+                      height={800}
+                      alt="Preview"
+                      className="rounded-lg w-full h-auto"
+                    />
+                  </div>
+                </div>
+              )}
+        
       </div>
     </MaxWidthWrapper>
   );
