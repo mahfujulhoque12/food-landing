@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { RiArrowRightSFill } from 'react-icons/ri'
 
+
+
 const Specification = () => {
   const { data: specImg=[], isLoading, isError, error } = useGetSpecImageQuery()
   const { data: description = { title: '', specs: [] } } = useGetSpecTextQuery()
@@ -35,7 +37,10 @@ const Specification = () => {
 
         {/* Specification Text */}
         <div>
-          <h2 className="text-2xl font-bold mb-3 text-gray-800">{description.title}</h2>
+          <h2 className="text-2xl font-bold mb-3 text-gray-800 flex items-start gap-3">
+           
+            {description.title}
+            </h2>
  
             {description.specs.map((item: string, index: number) => (
               <p className='text-base font-medium text-gray-600 my-2.5 flex items-start gap-1' key={index}>  <span className="min-w-[1.5rem] pt-1 text-gray-700">

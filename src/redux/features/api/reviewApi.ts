@@ -8,6 +8,7 @@ export interface Review {
   comment: string;
   img:string | StaticImageData,
   customerType:string;
+  imgs:string[] | StaticImageData [];
 
 }
 

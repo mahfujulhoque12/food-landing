@@ -42,7 +42,7 @@ const PromoVideo: React.FC = () => {
   return (
     <section className="mt-5">
       <MaxWidthWrapper>
-        <h2 className="text-gray-700 text-2xl font-bold text-center pb-5">
+        <h2 className="text-gray-700 text-2xl font-bold  pb-5">
           Promo Video
         </h2>
         <div className="relative space-y-8">
