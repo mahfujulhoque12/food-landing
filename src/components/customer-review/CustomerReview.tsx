@@ -22,7 +22,7 @@ const CustomerReview = () => {
 
   return (
     <MaxWidthWrapper>
-      <h2 className="text-2xl font-semibold text-center my-5 text-gray-800">
+      <h2 className="text-2xl font-bold text-center my-5 text-gray-800">
         Customer Reviews
       </h2>
 

@@ -35,7 +35,7 @@ const WhyUs = () => {
 
         {/* WhyUs Text */}
         <div>
-          <h2 className="text-xl font-semibold mb-3 text-gray-800">{description.title}</h2>
+          <h2 className="text-2xl font-bold mb-3 text-gray-800">{description.title}</h2>
           <ol className="list-decimal pl-6 space-y-1">
             {description.reasons.map((item: string, index: number) => (
               <li className='text-base font-medium text-gray-600 my-2.5' key={index}>{item}</li>
