@@ -46,7 +46,7 @@ const PromoVideo: React.FC = () => {
           Promo Video
         </h2>
         <div className="relative space-y-8">
-          {videoData.map(({ url, title, des }, index) => {
+          {videoData.map(({ url}, index) => {
             const autoplayUrl = url.includes("?")
               ? `${url}&autoplay=1&mute=1`
               : `${url}?autoplay=1&mute=1`;
@@ -58,7 +58,7 @@ const PromoVideo: React.FC = () => {
                   videoRefs.current[index] = el;
                 }}
                 data-index={index}
-                className="p-4 relative shadow-md z-10 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                className=" relative z-10 border border-gray-200 rounded-lg  duration-300"
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-md">
                   <iframe
@@ -70,10 +70,7 @@ const PromoVideo: React.FC = () => {
                     allowFullScreen
                   />
                 </div>
-                <h3 className="text-gray-600 py-1 text-lg font-semibold">
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-sm font-normal">{des}</p>
+            
               </div>
             );
           })}
