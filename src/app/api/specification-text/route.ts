@@ -13,7 +13,7 @@ export const GET = async () => {
       "Moisture Content: Less than 8%",
       "Shelf Life: 24 months from the date of packaging",
       "Packaging Type: Foil pouch with zip lock",
-      "Recommended Usage: Add 1 tsp to smoothies, soups, or water daily"
+
     ]
   };
 

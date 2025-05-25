@@ -121,7 +121,7 @@ const ByeNow = () => {
             disabled={isLoading}
             className="relative cursor-pointer overflow-hidden text-xl font-bold text-white bg-[var(--btn-bg)]  px-6 py-3 rounded-md w-full block text-center group"
           >
-            <span className="relative z-10"> {isLoading ? 'Placing Order...' : 'Place Order'}</span>
+            <span className="relative z-10"> {isLoading ? 'Placing Order...' : 'Order Now'}</span>
      
              <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </button>
