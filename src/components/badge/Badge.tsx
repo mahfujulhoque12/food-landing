@@ -3,10 +3,11 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 import { useGetbadgeQuery } from "@/redux/features/api/badgeApi";
 import Image from "next/image";
 import Link from "next/link";
+import BadgeLoading from "../loading/BadgeLoading";
 
 const Badge = () => {
   const { data: badges = [], isLoading } = useGetbadgeQuery();
-  if (isLoading) return <p>Loading…</p>;
+  if (isLoading) return <BadgeLoading/>;
 
   return (
     <MaxWidthWrapper>

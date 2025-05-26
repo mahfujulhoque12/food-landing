@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
 import { useGetPromoVideoQuery } from "@/redux/features/api/promoVideoApi";
+import PromoVideoLoagin from "../loading/PromoVideoLoagin";
 
 const PromoVideo: React.FC = () => {
   const { data: videoData = [], isLoading } = useGetPromoVideoQuery();
@@ -37,7 +38,7 @@ const PromoVideo: React.FC = () => {
     };
   }, [videoData]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <PromoVideoLoagin/>;
 
   return (
     <section className="mt-5">

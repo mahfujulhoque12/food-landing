@@ -10,6 +10,7 @@ import {
   useGetWhyUsTextQuery,
 } from "@/redux/features/api/whyUsApi";
 import { RiArrowRightSFill } from "react-icons/ri";
+import SpecificationLoading from "../loading/SpecificationLoading";
 
 const WhyUs = () => {
   const {
@@ -21,7 +22,7 @@ const WhyUs = () => {
   const { data: description = { title: "", reasons: [] } } =
     useGetWhyUsTextQuery();
 
-  if (isLoading) return <p>Loading…</p>;
+  if (isLoading) return <SpecificationLoading/>;
   if (isError) return <p>Error loading WhyUss: {String(error)}</p>;
 
   return (
