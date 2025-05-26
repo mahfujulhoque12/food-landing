@@ -1,6 +1,6 @@
 import React from 'react'
 import MaxWidthWrapper from '../MaxWidthWrapper'
-// import logo1 from '/public/logo/logo1.jpg';npx shadcn@latest add carousel
+
 
 import logo2 from '/public/logo/logo.svg';
 import Image from 'next/image';
@@ -23,7 +23,7 @@ const Header = () => {
           
             </div>
 
-            <Link href="#" className='flex items-center gap-2'>
+            <Link href="/" className='flex items-center gap-2'>
                 <Image src={logo2} width={100} height={100} alt='logo' className='w-[100px] h-[80px]'/>
            
             </Link>

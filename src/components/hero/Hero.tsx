@@ -11,6 +11,7 @@ import {
 import { useGetBannersQuery } from '@/redux/features/api/bannerApi'
 import Image from 'next/image'
 import MaxWidthWrapper from '../MaxWidthWrapper'
+import HeroLoadin from '../loading/HeroLoadin'
 
 const Hero = () => {
   const { data: banners = [], isLoading } = useGetBannersQuery()
@@ -33,7 +34,7 @@ const Hero = () => {
     }
   }, [api])
 
-  if (isLoading) return <p>Loading…</p>
+  if (isLoading) return <HeroLoadin/>
 
   // Calculate dots (always 4 dots)
   const dotCount = Math.min(4, banners.length) // Ensure dotCount doesn't exceed banner count

@@ -6,6 +6,8 @@ import { useGetSpecImageQuery, useGetSpecTextQuery } from '@/redux/features/api/
 import Image from 'next/image'
 import Link from 'next/link'
 import { RiArrowRightSFill } from 'react-icons/ri'
+import SpecificationLoading from '../loading/SpecificationLoading'
+
 
 
 
@@ -14,7 +16,11 @@ const Specification = () => {
   const { data: description = { title: '', specs: [] } } = useGetSpecTextQuery()
 
 
-  if (isLoading) return <p>Loading…</p>
+  if (isLoading) {
+    return (
+    <SpecificationLoading/>
+    );
+  }
   if (isError) return <p>Error loading specifications: {String(error)}</p>
 
   return (
