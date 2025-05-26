@@ -54,6 +54,7 @@ const CustomerReview = () => {
                         width={100}
                         height={100}
                         alt="img"
+                        unoptimized
                         className="rounded-full h-16 w-16 object-cover"
                       /> :     <FaUserCircle size={50} color="#D84040"/>}
                   

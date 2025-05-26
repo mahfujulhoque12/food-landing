@@ -7,6 +7,7 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
 import { FaTrashAlt } from "react-icons/fa";
 import { useGetCardsQuery } from "@/redux/features/api/cardApi";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const Card: React.FC = () => {
   const { data: cards = [], isLoading } = useGetCardsQuery();
@@ -43,7 +44,15 @@ const Card: React.FC = () => {
 
   return (
     <MaxWidthWrapper>
-      <div className="flex flex-col gap-6">
+           <div className="flex flex-col gap-6 relative">
+           <Link
+            href="/"
+            className="absolute top-4 left-4"
+          >
+            <span className="relative z-10"> <FaArrowLeft size={25}/></span>
+      
+          </Link>
+
         <h3 className="text-center text-2xl font-bold text-gray-700 mt-3">
           Product List
         </h3>
@@ -68,12 +77,15 @@ const Card: React.FC = () => {
 
               {/* Image */}
               <div className="relative w-24 h-24 rounded overflow-hidden">
-                <Image
-                  src={card.image}
-                  alt={card.name}
-                  fill
-                  className="object-cover"
-                />
+           <Image
+  src={card.image}
+  alt={card.name}
+  width={96}
+  height={96}
+  className="object-cover rounded"
+
+/>
+
               </div>
 
               {/* Info */}
@@ -145,20 +157,14 @@ const Card: React.FC = () => {
         {/* Buttons */}
         <div className="mt-5 space-y-3">
           <Link
-            href="#"
+            href="/checkout"
             className="relative overflow-hidden text-xl font-bold text-white bg-[var(--btn-bg)] px-6 py-3 rounded-md w-full block text-center group"
           >
             <span className="relative z-10">Checkout</span>
             <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </Link>
 
-          <Link
-            href="/"
-            className="relative overflow-hidden text-xl font-bold text-white bg-[var(--btn-bg)] px-6 py-3 rounded-md w-full block text-center group"
-          >
-            <span className="relative z-10">Go Home</span>
-            <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-          </Link>
+         
         </div>
       </div>
     </MaxWidthWrapper>
