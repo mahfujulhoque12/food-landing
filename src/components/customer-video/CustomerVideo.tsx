@@ -49,9 +49,10 @@ const CustomerVideo: React.FC = () => {
                       <Image
                         src={thumbnail}
                         alt={`Video thumbnail ${index + 1}`}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-md"
+                        width={500}
+                        height={500}
+                        
+                        className="rounded-md object-cover"
                       />
                       <div className="absolute inset-0  flex items-center justify-center">
                         <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg">
