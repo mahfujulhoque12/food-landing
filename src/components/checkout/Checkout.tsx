@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import MaxWidthWrapper from '../MaxWidthWrapper';
+import Image from 'next/image';
+import { FaCheck } from 'react-icons/fa6';
+type PaymentMethod = 'bkash' | 'nogod' | 'rocket';
 
 type FormValues = {
   billing: {
@@ -16,10 +19,22 @@ type FormValues = {
     phone: string;
     address: string;
   };
-  paymentMethod: 'bkash' | 'nogod' | 'rocket';
+ paymentMethod: PaymentMethod;
 };
 
+
+
 const Checkout: React.FC = () => {
+
+const paymentMethods: { id: PaymentMethod; label: string; logo: string }[] = [
+  { id: 'bkash', label: 'Bkash', logo: '/logo/bkash.png' },
+  { id: 'nogod', label: 'Nagad', logo: '/logo/nagad.png' },
+  { id: 'rocket', label: 'Rocket', logo: '/logo/rocket.png' },
+];
+
+
+const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -149,24 +164,58 @@ const Checkout: React.FC = () => {
         </div>
 
         {/* Payment Method */}
-        <div className="border border-gray-300 p-6 rounded-lg shadow-sm bg-white">
-          <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
-          <div className="space-y-3">
-            {['bkash', 'nogod', 'rocket'].map((method) => (
-              <label key={method} className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  value={method}
-                  {...register('paymentMethod', { required: 'Select a payment method' })}
+ <div className="border border-gray-300 p-6 rounded-lg shadow-sm bg-white">
+      <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
+
+      <div className="flex flex-col gap-4">
+        {paymentMethods.map((method) => {
+          const isActive = selectedMethod === method.id;
+
+          return (
+            <div
+              key={method.id}
+              onClick={() => {
+                setSelectedMethod(method.id);
+                setValue('paymentMethod', method.id, { shouldValidate: true });
+              }}
+              className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition duration-200 ${
+                isActive
+                  ? 'border-green-500 ring-2 ring-green-200'
+                  : 'border-gray-200 hover:border-green-300'
+              }`}
+            >
+              <div className="flex items-center gap-0">
+                <Image
+                  src={method.logo}
+                  alt={method.label}
+                  width={80}
+                  height={50}
+                  className="object-contain h-10 w-20"
                 />
-                {method.charAt(0).toUpperCase() + method.slice(1)}
-              </label>
-            ))}
-            {errors.paymentMethod && (
-              <p className="text-red-500 text-sm">{errors.paymentMethod.message}</p>
-            )}
-          </div>
-        </div>
+                <span className="text-base font-medium text-gray-700">
+                  {method.label}
+                </span>
+              </div>
+
+                <FaCheck className={`${isActive ? "text-green-500" :"text-gray-400"} `} />
+          
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Hidden input for RHF */}
+      <input
+        type="hidden"
+        {...register('paymentMethod', {
+          required: 'Select a payment method',
+        })}
+      />
+
+      {errors.paymentMethod && (
+        <p className="text-red-500 text-sm mt-2">{errors.paymentMethod.message}</p>
+      )}
+    </div>
 
         <button
           type="submit"

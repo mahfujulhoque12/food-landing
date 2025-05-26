@@ -7,7 +7,7 @@ const products = [
     basePrice: 50,
     taxRate: 0.1,
     size: '500ml',
-    color: '#F564A9', // Golden color
+    color: 'red', // Golden color
     image: '/product/product1.png',
   },
   {
@@ -16,7 +16,7 @@ const products = [
     basePrice: 15,
     taxRate: 0.1,
     size: '100g',
-    color: '#FF0B55', // Beige
+    color: 'beige', // Beige
     image: '/product/product2.png',
   },
   {
@@ -25,7 +25,7 @@ const products = [
     basePrice: 25,
     taxRate: 0.07,
     size: 'Medium',
-    color: '#AC1754', // Yellow
+    color: 'yellow', // Yellow
     image: '/product/product3.png',
   },
 ];
