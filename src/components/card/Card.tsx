@@ -44,14 +44,13 @@ const Card: React.FC = () => {
 
   return (
     <MaxWidthWrapper>
-           <div className="flex flex-col gap-6 relative">
-           <Link
-            href="/"
-            className="absolute top-4 left-4"
-          >
-            <span className="relative z-10"> <FaArrowLeft size={25}/></span>
-      
-          </Link>
+      <div className="flex flex-col gap-6 relative">
+        <Link href="/" className="absolute top-4 left-4">
+          <span className="relative z-10">
+            {" "}
+            <FaArrowLeft size={25} />
+          </span>
+        </Link>
 
         <h3 className="text-center text-2xl font-bold text-gray-700 mt-3">
           Product List
@@ -77,15 +76,13 @@ const Card: React.FC = () => {
 
               {/* Image */}
               <div className="relative w-24 h-24 rounded overflow-hidden">
-           <Image
-  src={card.image}
-  alt={card.name}
-  width={96}
-  height={96}
-  className="object-cover rounded"
-
-/>
-
+                <Image
+                  src={card.image}
+                  alt={card.name}
+                  width={96}
+                  height={96}
+                  className="object-cover rounded"
+                />
               </div>
 
               {/* Info */}
@@ -96,16 +93,9 @@ const Card: React.FC = () => {
                 <h2 className="text-sm font-medium text-gray-800">
                   <span className="font-normal">Size: </span> {card.size}
                 </h2>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="text-sm font-normal text-gray-800">
-                    Color:
-                  </span>
-                  <span
-                    className="w-4 h-4 rounded-full border border-gray-300"
-                    style={{ backgroundColor: card.color }}
-                    title={card.color}
-                  />
-                </div>
+                <h2 className="text-sm font-medium text-gray-800">
+                  <span className="font-normal">Color: </span> {card.color}
+                </h2>
 
                 <div className="flex items-center gap-3 mt-2">
                   <button
@@ -163,8 +153,6 @@ const Card: React.FC = () => {
             <span className="relative z-10">Checkout</span>
             <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </Link>
-
-         
         </div>
       </div>
     </MaxWidthWrapper>
